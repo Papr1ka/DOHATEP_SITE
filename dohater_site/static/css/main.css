@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root{
+    --barguny_color: #480000;
+    --white_color: #FFFFFF;
+    --purple_color: #7B4A4A;
+    --red_color: #803137;
+    --train_red: #B0010F;
+    --green: #219653;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.mainfont{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 115%;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
