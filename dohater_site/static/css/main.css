@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
 
 :root{
-    --barguny_color: #480000;
+    --burgundy_color: #480000;
     --white_color: #FFFFFF;
     --purple_color: #7B4A4A;
     --red_color: #803137;
@@ -18,10 +18,33 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 115%;
+    letter-spacing: 0.015em;
+}
+
+.headerfont{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.015em;
+}
+
+.f-s-18{
+    font-size: 18px;
+    text-align: center;
 }
 
 textarea:focus, input:focus{
     outline: none;
+}
+
+.bold{
+    font-weight: 700 !important;
+}
+
+.underline{
+    text-decoration: underline !important;
 }
