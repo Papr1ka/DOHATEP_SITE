@@ -1,0 +1,70 @@
+{% extends 'cdo_ska/index.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock links %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="inner">
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <div class="side-head headerfont">Фильтры</div>
+                <div class="line"></div>
+                <div class="side-category">
+                    <div class="side-header categoryfont">Профессия</div>
+                    <input type="checkbox" class="checkbox" id="prof1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="prof1">Машинист</label>
+                    <input type="checkbox" class="checkbox" id="prof2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="prof2">Обходчик путей</label>
+                    <input type="checkbox" class="checkbox" id="prof3" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="prof3">Инструктор</label>
+                </div>
+                <div class="side-category">
+                    <div class="side-header categoryfont">Год</div>
+                    <input type="checkbox" class="checkbox" id="year1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="year1">2023</label>
+                    <input type="checkbox" class="checkbox" id="year2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="year2">2022</label>
+                    <input type="checkbox" class="checkbox" id="year3" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="year3">2021</label>
+                </div>
+                <div class="side-category">
+                    <div class="side-header categoryfont">Месяц</div>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month1">Январь</label>
+                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
+                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

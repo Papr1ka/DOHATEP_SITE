@@ -71,6 +71,10 @@
     display: none;
 }
 
+.line{
+    border-bottom: 2px solid var(--white_color);
+}
+
 @media screen and (max-width: 1360px) {
     .nav-wrapper{
         width: 100%;

@@ -5,8 +5,9 @@
     --white_color: #FFFFFF;
     --purple_color: #7B4A4A;
     --red_color: #803137;
-    --train_red: #B0010F;
-    --green: #219653;
+    --train_red_color: #B0010F;
+    --green_color: #219653;
+    --filters_color: rgba(255, 255, 255, 0.75);
 }
 
 *{
@@ -39,6 +40,7 @@
 
 textarea:focus, input:focus{
     outline: none;
+    border: 3px solid var(--burgundy_color);
 }
 
 .bold{
