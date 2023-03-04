@@ -111,7 +111,7 @@
         padding: 0px 20px
     }
 
-    .ico{
+    #ico-header{
         margin-right: 0px;
     }
 
@@ -130,6 +130,12 @@
 
 @media screen and (max-width: 480px) {
     .info-3{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .info-4{
         display: none;
     }
 }

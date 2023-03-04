@@ -50,3 +50,11 @@ textarea:focus, input:focus{
 .underline{
     text-decoration: underline !important;
 }
+
+.train_red{
+    color: var(--train_red_color);
+}
+
+.logo{
+    max-width: 100%;
+}

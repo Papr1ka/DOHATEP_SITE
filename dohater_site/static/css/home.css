@@ -1,26 +1,26 @@
 .wrapper{
     width: 100%;
-    min-height: 100vh;
 }
 
 .inner{
     width: 1280px;
     margin: auto;
     height: 100%;
+    display: flex;
+    margin-bottom: 40px;
 }
 
 .sidebar{
-    width: 290px;
     background: var(--red_color);
     color: var(--white_color);
-    position: absolute;
-    top: 212px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
 }
 
 .sidebar-inner{
     display: flex;
     flex-direction: column;
-    padding: 0px 40px;
+    padding: 0px 40px 20px 40px;
 }
 
 .side-head{
@@ -79,7 +79,7 @@
 }
 
 .main{
-    margin-left: 330px;
+    margin-left: 40px;
 }
 
 .founded{
@@ -93,7 +93,7 @@
 }
 
 .content{
-    background: var(--red_color);
+    background: var(--purple_color);
     border-radius: 24px;
 }
 
@@ -154,5 +154,11 @@
 
     .element{
         gap: 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .questions{
+        display: none;
     }
 }
