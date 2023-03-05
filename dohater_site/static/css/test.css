@@ -1,6 +1,7 @@
 .c-content{
     width: 100%;
     padding: 40px 80px;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -90,6 +91,30 @@
     transform: translateY(-5px);
 }
 
+.c-big-font{
+    font-size: 24px;
+}
+
+.c-info{
+    gap: 40px;
+}
+
+.c-info div{
+    display: flex;
+    gap: 40px;
+    width: fit-content;
+}
+
+.c-info div:not(:last-child){
+    padding-right: 40px;
+    border-right: 2px solid var(--white_color);
+}
+
+.c-info p:not(:last-child){
+    padding-right: 40px;
+    border-right: 2px solid var(--white_color);
+}
+
 .add{
     background-color: var(--red_color);
 }
@@ -104,6 +129,10 @@
 
 .space{
     justify-content: space-between;
+}
+
+.image img{
+    max-width: 100%;
 }
 
 @media screen and (max-width: 1280px) {
@@ -135,6 +164,15 @@
 
     .c-header{
         font-size: 24px;
+    }
+
+    .c-info{
+        flex-direction: column;
+    }
+
+    .c-info div:not(:last-child){
+        border: none;
+        padding-right: 0px;
     }
 }
 

@@ -1,0 +1,49 @@
+{% extends 'cdo_ska/index.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/test.css' %}">
+{% endblock links %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="inner">
+        <div class="content c-content mainfont">
+            <div class="c-info c-box c-big-font">
+                <div>
+                    <p>Машинист</p>
+                    <p>2022</p>
+                </div>
+                <div>
+                    <p>Февраль</p>
+                    <p>3 вопроса</p>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="big-font">Распоряжение ОАО «РЖД» от 4 февраля 2019 г N 183р Об утверждении Инструкции по эксплуатации локомотивных устройств безопасности Ответы СДО</div>
+            <div class="c-box top c-v-480">
+                <p class="">1</p>
+                <div class="c-box vertical">
+                    <p class="muted c-box space">Вопрос</p>
+                    <p>фывыфвфывфывфывыфвфывфывфыв</p>
+                    <p class="muted">Ответ</p>
+                    <p>привет привет привет привет привет</p>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="c-box top c-v-480">
+                <p class="">2</p>
+                <div class="c-box vertical">
+                    <div class="image">
+                        <img src="{% static 'images/logo.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+{% endblock content %}

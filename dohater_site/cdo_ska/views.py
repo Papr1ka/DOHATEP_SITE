@@ -9,3 +9,6 @@ def home(request):
 
 def create_test(request):
     return render(request, 'cdo_ska/create_test.html')
+
+def test(request):
+    return render(request, 'cdo_ska/test.html')

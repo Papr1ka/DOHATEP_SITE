@@ -25,6 +25,10 @@
     letter-spacing: 0.015em;
 }
 
+p{
+    word-wrap: break-word;
+}
+
 .headerfont{
     font-family: 'Inter';
     font-style: normal;
