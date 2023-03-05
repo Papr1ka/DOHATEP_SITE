@@ -13,3 +13,30 @@
 .c-header{
     font-size: 32px;
 }
+
+.c-search{
+    height: 29px;
+    padding: 18px 40px;
+    border-radius: 64px;
+    border: 3px solid var(--purple_color);
+    color: var(--black_color);
+}
+
+.c-box{
+    display: flex;
+    gap: 80px;
+    width: 100%;
+}
+
+.center{
+    align-items: center;
+}
+
+.vertical{
+    flex-direction: column;
+    gap: 20px;
+}
+
+.muted{
+    color: var(--filters_color);
+}

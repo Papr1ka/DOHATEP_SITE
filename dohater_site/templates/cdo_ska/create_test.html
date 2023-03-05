@@ -6,14 +6,15 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/create_test.css' %}">
 <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+<link rel="stylesheet" href="{% static 'css/spinbox.css' %}">
 {% endblock links %}
 
 {% block content %}
 
 <div class="wrapper">
     <div class="inner">
-        <div class="content c-content">
-            <div class="c-header mainfont">Создание теста</div>
+        <div class="content c-content mainfont">
+            <div class="c-header">Создание теста</div>
             <div class="dropdown">
                 <button class="dropbtn">
                     Профессия
@@ -63,6 +64,32 @@
                 </div>
             </div>
             <div class="line"></div>
+            <input class="headerfont c-search" placeholder="Название теста" type="text">
+            <div class="c-box center">
+                <div class="mainfont">Количество вопросов</div>
+                <div class="spinbox">
+                    <button class="spinbox-minus" type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">
+                        <svg width="26" height="2" viewBox="0 0 26 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1H25" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <input class="mainfont" type="number" min="1" value="1" max="100" readonly>
+                    <button class="spinbox-plus" type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 13H25M13 1L13 25" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="c-box top">
+                <p class="">1</p>
+                <div class="c-box vertical">
+                    <p class="muted">Вопрос</p>
+                    <input type="text" class="headerfont c-search resize" placeholder="Вопрос">
+                    <p class="muted">Ответ</p>
+                    <input type="text" class="headerfont c-search resize" placeholder="Ответ">
+                </div>
+            </div>
         </div>
     </div> 
 </div>

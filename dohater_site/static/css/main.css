@@ -8,6 +8,7 @@
     --train_red_color: #B0010F;
     --green_color: #219653;
     --filters_color: rgba(255, 255, 255, 0.75);
+    --black_color: #000000;
 }
 
 *{
