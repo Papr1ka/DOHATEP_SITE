@@ -1,0 +1,70 @@
+{% extends 'cdo_ska/index.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/create_test.css' %}">
+<link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+{% endblock links %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="inner">
+        <div class="content c-content">
+            <div class="c-header mainfont">Создание теста</div>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Профессия
+                    <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.4667 0L17 16.1333L4.53339 0H1.90735e-05L17 22L33.9999 0H29.4667Z" fill="white"/>
+                    </svg>
+                </button>
+                <div class="dropdown-content mainfont">
+                    <p>Машинист</p>
+                    <p>Обходчик путей</p>
+                    <p>Инструктор</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Месяц
+                    <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.4667 0L17 16.1333L4.53339 0H1.90735e-05L17 22L33.9999 0H29.4667Z" fill="white"/>
+                    </svg>
+                </button>
+                <div class="dropdown-content mainfont">
+                    <p>Январь</p>
+                    <p>Февраль</p>
+                    <p>Март</p>
+                    <p>Апрель</p>
+                    <p>Май</p>
+                    <p>Июнь</p>
+                    <p>Июль</p>
+                    <p>Август</p>
+                    <p>Сентябрь</p>
+                    <p>Октябрь</p>
+                    <p>Ноябрь</p>
+                    <p>Декабрь</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Год
+                    <svg width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.4667 0L17 16.1333L4.53339 0H1.90735e-05L17 22L33.9999 0H29.4667Z" fill="white"/>
+                    </svg>
+                </button>
+                <div class="dropdown-content mainfont">
+                    <p>2023</p>
+                    <p>2022</p>
+                    <p>2021</p>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div> 
+</div>
+
+{% endblock content %}
