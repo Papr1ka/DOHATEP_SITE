@@ -63,10 +63,10 @@
         </div>
         <div class="main">
             <div class="founded headerfont">
-                <span class="count">18</span> Тестов найдено
+                <span class="count">{{ tests.count }}</span> Тестов найдено
             </div>
+            {% if tests.count > 0 %}
             <div class="content">
-
                 <div class="element mainfont topelement">
                     <div class="number">№</div>
                     <div class="test_name">Название теста</div>
@@ -74,23 +74,15 @@
                 </div>
 
                 <div class="line cline"></div>
-
+                {% for test in tests %}
                 <div class="element mainfont">
-                    <div class="number">1</div>
-                    <div class="test_name">Распоряжение ОАО «РЖД» от 12 декабря 2017 г № 2580р пункт 54 Действия машиниста встречного поезда при вынужденной остановке поезда на перегоне Ответы СДО</div>
-                    <div class="questions">2</div>
+                    <div class="number">{{ forloop.counter }}</div>
+                    <div class="test_name">{{ test.name }}</div>
+                    <div class="questions">{{ test.number_questions }}</div>
                 </div>
-                <div class="element mainfont">
-                    <div class="number">1</div>
-                    <div class="test_name">Распоряжение ОАО «РЖД» от 12 декабря 2017 г № 2580р пункт 54 Действия машиниста встречного поезда при вынужденной остановке поезда на перегоне Ответы СДО</div>
-                    <div class="questions">2</div>
-                </div>
-                <div class="element mainfont">
-                    <div class="number">1</div>
-                    <div class="test_name">Распоряжение ОАО «РЖД» от 12 декабря 2017 г № 2580р пункт 54 Действия машиниста встречного поезда при вынужденной остановке поезда на перегоне Ответы СДО</div>
-                    <div class="questions">2</div>
-                </div>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div> 
 </div>

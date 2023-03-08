@@ -23,6 +23,11 @@
     padding: 0px 40px 20px 40px;
 }
 
+.content-message{
+    width: 100%;
+    padding: 40px;
+}
+
 .side-head{
     margin-top: 60px;
 }

@@ -11,7 +11,7 @@ class Professy(models.Model):
     
 class Test(models.Model):
     name = models.TextField()
-    professy = models.OneToOneField("Professy", on_delete=models.CASCADE)
+    professy = models.ForeignKey("Professy", on_delete=models.CASCADE)
     date = models.DateField()
     number_questions = models.IntegerField()
     
