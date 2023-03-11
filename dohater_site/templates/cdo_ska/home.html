@@ -71,13 +71,33 @@
                 </div>
 
                 <div class="line cline"></div>
-                {% for test in page_obj %}
-                <div class="element mainfont">
-                    <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
-                    <div class="test_name">{{ test.name }}</div>
-                    <div class="questions">{{ test.number_questions }}</div>
-                </div>
-                {% endfor %}
+                {% if query != "" %}
+                    {% for test in page_obj %}
+                    <div class="element mainfont">
+                        <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
+                        {% autoescape off %}
+                        <div class="test_name">
+                            {{ test.name | highlight:query}}
+                            <br>
+                            <span class="second">{{ test.questions | find_and_highlight:query }}</span>
+                        </div>
+                        {% endautoescape %}
+                        <div class="questions">{{ test.number_questions }}</div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    {% for test in page_obj %}
+                    <div class="element mainfont">
+                        <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
+                        {% autoescape off %}
+                        <div class="test_name">
+                            {{ test.name }}
+                        </div>
+                        {% endautoescape %}
+                        <div class="questions">{{ test.number_questions }}</div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="line mg20"></div>
                 <div class="pagination mainfont">
                     {% url 'home' request.GET.urlencode as home_url %}

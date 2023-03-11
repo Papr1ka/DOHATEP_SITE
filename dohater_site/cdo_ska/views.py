@@ -54,6 +54,7 @@ class HomePageView(ListView):
             message = "Тестов найдено"
         
         context['message'] = message
+        context['query'] = self.request.GET.get("query", "")
         
         return context
     

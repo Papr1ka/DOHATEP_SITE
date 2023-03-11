@@ -16,13 +16,6 @@
     color: var(--white_color);
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-}
-
-.sidebar *{
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
 }
 
 .sidebar-inner{
@@ -116,6 +109,10 @@
     margin-right: 20px;
 }
 
+.test_name span.highlight{
+    color: var(--train_red_color);
+}
+
 .content{
     background: var(--purple_color);
     border-radius: 24px;
@@ -123,6 +120,11 @@
 
 .content:last-child{
     padding-bottom: 40px;
+}
+
+.second{
+    color: var(--filters_color);
+    font-size: 20px;
 }
 
 .element{

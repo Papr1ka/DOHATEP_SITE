@@ -1,6 +1,6 @@
 from django import template
 from django.core.paginator import Paginator
-from django.http import QueryDict
+from re import IGNORECASE, compile, escape as rescape
 
 register = template.Library()
 
@@ -28,3 +28,45 @@ def replace(querydict, argument, value):
         querydict.pop(argument)
     querydict.appendlist(argument, value)
     return querydict.urlencode()
+
+@register.filter
+def highlight(string: str, substring: str):
+    rgx = compile(rescape(substring), IGNORECASE)
+    return rgx.sub(
+            lambda m: f"<span>{substring}</span>",
+            string
+        )
+
+
+def highlight(string, substring):
+    rgx = compile(rescape(substring), IGNORECASE)
+    return rgx.sub(
+            lambda m: f'<span class="highlight">{substring}</span>',
+            string
+        )
+
+@register.filter
+def find_and_highlight(question, substring: str):
+    """
+    сделать выбор нужного вопроса, а то сейчас выводится первый попавшийся
+    """
+    print(type(question))
+    print(dir(question))
+    
+    question = question.values()
+    
+    print(question)
+    
+    if len(question) > 0:
+        question = question.values()[0]
+    else:
+        return ""
+    string = question.get("question").lower()
+    string_lower = string.lower()
+    substring_lower = substring.lower()
+    if string_lower.find(substring_lower) == -1:
+        string = question.get("answer")
+    
+    print(string, substring)
+    
+    return highlight(string, substring)
