@@ -63,3 +63,10 @@ textarea:focus, input:focus{
 .logo{
     max-width: 100%;
 }
+
+.visible{
+    display: flex !important;
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+}

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Professy(models.Model):
+class Profession(models.Model):
     name = models.CharField(max_length=100)
     
     def __str__(self) -> str:
@@ -11,7 +11,7 @@ class Professy(models.Model):
     
 class Test(models.Model):
     name = models.TextField()
-    professy = models.ForeignKey("Professy", on_delete=models.CASCADE)
+    profession = models.ForeignKey("Profession", on_delete=models.CASCADE)
     date = models.DateField()
     number_questions = models.IntegerField()
     
@@ -20,6 +20,9 @@ class Test(models.Model):
     
     def __repr__(self) -> str:
         return self.__str__()
+    
+    class Meta:
+        ordering = ['-id']
 
 class Question(models.Model):
     type = models.BooleanField() #True if Image

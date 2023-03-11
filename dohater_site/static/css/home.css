@@ -8,6 +8,7 @@
     height: 100%;
     display: flex;
     margin-bottom: 40px;
+    position: relative;
 }
 
 .sidebar{
@@ -15,6 +16,13 @@
     color: var(--white_color);
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+}
+
+.sidebar *{
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
 }
 
 .sidebar-inner{
@@ -65,6 +73,16 @@
     opacity: 0;
 }
 
+.submit{
+    margin-top: 20px;
+    border: none;
+    padding: 8px;
+    border-radius: 16px;
+    color: var(--white_color);
+    background-color: var(--green_color);
+    font-size: 16px;
+}
+
 .checkbox+label::before{
     content: '';
     display: inline-block;
@@ -85,6 +103,7 @@
 
 .main{
     margin-left: 40px;
+    width: 100%;
 }
 
 .founded{
@@ -122,6 +141,11 @@
 
 .cline{
     margin-bottom: 30px;
+}
+
+.mg20{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1280px) {

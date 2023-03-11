@@ -1,0 +1,33 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+ul.pagination-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.pagination-element a, .pagination-element span {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--white_color);
+    border-radius: 16px;
+}
+
+.pagination-element a:hover {
+    background-color: var(--filters_color);
+}
+
+.pagination-element.active a {
+    background-color: var(--green_color);
+}
+
+@media screen and (max-width: 768px) {
+    .pagination-element:not(.important){
+        display: none;
+    }
+}

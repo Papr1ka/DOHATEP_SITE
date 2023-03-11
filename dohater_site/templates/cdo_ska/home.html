@@ -1,71 +1,68 @@
 {% extends 'cdo_ska/index.html' %}
 
 {% load static %}
+{% load paginator_tags %}
+{% load i18n %}
 
 {% block links %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/pagination.css' %}">
 {% endblock links %}
 
-{% block content %}
+{% block endlinks %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
 
+{% block content %}
+{% with paginator.count as tests_count %}
 <div class="wrapper">
     <div class="inner">
-        <div class="sidebar">
-            <div class="sidebar-inner">
+        <div id="sidebar" class="sidebar">
+            <form class="sidebar-inner" action="/" method="get">
+                {% csrf_token %}
                 <div class="side-head headerfont">Фильтры</div>
                 <div class="line"></div>
+                {% if professions.count > 0 %}
                 <div class="side-category">
                     <div class="side-header categoryfont">Профессия</div>
-                    <input type="checkbox" class="checkbox" id="prof1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="prof1">Машинист</label>
-                    <input type="checkbox" class="checkbox" id="prof2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="prof2">Обходчик путей</label>
-                    <input type="checkbox" class="checkbox" id="prof3" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="prof3">Инструктор</label>
+                    {% get_proper_elided_page_range paginator page_obj.number as page_range %}
+                    {% for profession in professions %}
+                    {% get_filter_cheked form_data "profession_" profession.id as is_cheked %}
+                    <input type="checkbox" class="checkbox" id="profession_{{ profession.id }}" name="profession_{{ profession.id }}" {{ is_cheked }} value="{{ profession.id }}">
+                    <label class="checkbox-label headerfont" for="profession_{{ profession.id }}">{{ profession.name }}</label>
+                    {% endfor %}
                 </div>
+                {% endif %}
+                {% if years %}
                 <div class="side-category">
                     <div class="side-header categoryfont">Год</div>
-                    <input type="checkbox" class="checkbox" id="year1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="year1">2023</label>
-                    <input type="checkbox" class="checkbox" id="year2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="year2">2022</label>
-                    <input type="checkbox" class="checkbox" id="year3" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="year3">2021</label>
+                    {% for year in years %}
+                    {% get_filter_cheked form_data "year_" year as is_cheked %}
+                    <input type="checkbox" class="checkbox" id="year_{{ year }}" name="year_{{ year }}" {{ is_cheked }} value="{{ year }}">
+                    <label class="checkbox-label headerfont" for="year_{{ year }}">{{ year }}</label>
+                    {% endfor %}
                 </div>
+                {% endif %}
+                {% if months %}
                 <div class="side-category">
                     <div class="side-header categoryfont">Месяц</div>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
-                    <input type="checkbox" class="checkbox" id="month1" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month1">Январь</label>
-                    <input type="checkbox" class="checkbox" id="month2" name="happy" value="yes">
-                    <label class="checkbox-label headerfont" for="month2">Февраль</label>
+                    {% language "ru" %}
+                    {% for month in months %}
+                    {% get_filter_cheked form_data "month_" month.month as is_cheked %}
+                    <input type="checkbox" class="checkbox" id="month_{{ month.month }}" name="month_{{ month.month }}" {{ is_cheked }} value="{{ month.month }}">
+                    <label class="checkbox-label headerfont" for="month_{{ month.month }}">{{ month | date:"F" }}</label>
+                    {% endfor %}
+                    {% endlanguage %}
                 </div>
-            </div>
+                {% endif %}
+                <button class="submit mainfont" type="submit" value="OK">Применить</button>
+            </form>
         </div>
         <div class="main">
             <div class="founded headerfont">
-                <span class="count">{{ tests.count }}</span> Тестов найдено
+                <span class="count">{{ tests_count }}</span> {{ message }}
             </div>
-            {% if tests.count > 0 %}
+            {% if tests_count > 0 %}
             <div class="content">
                 <div class="element mainfont topelement">
                     <div class="number">№</div>
@@ -74,17 +71,59 @@
                 </div>
 
                 <div class="line cline"></div>
-                {% for test in tests %}
+                {% for test in page_obj %}
                 <div class="element mainfont">
-                    <div class="number">{{ forloop.counter }}</div>
+                    <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
                     <div class="test_name">{{ test.name }}</div>
                     <div class="questions">{{ test.number_questions }}</div>
                 </div>
                 {% endfor %}
+                <div class="line mg20"></div>
+                <div class="pagination mainfont">
+                    {% url 'home' request.GET.urlencode as home_url %}
+                    <ul class="pagination-container">
+                        {% get_proper_elided_page_range paginator page_obj.number as page_range %} <!-- here -->
+                        {% if page_obj.has_previous %}
+                        <li class="pagination-element important">
+                            <!-- <a href="{{ home_url }}?page={{ page_obj.previous_page_number }}&{{request.GET.urlencode}}"><</a> -->
+                            {% replace request.GET "page" page_obj.previous_page_number as url %}
+                            <a href="{{ home_url }}?{{ url }}"><</a>
+                        </li>
+                        {% endif %}
+                        {% for page_num in page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="pagination-element active important">
+                                    <a class="page-link">{{ page_num }}</a>
+                                </li>
+                            {% else %}
+                                {% if page_num == paginator.ELLIPSIS %}
+                                    <li class="pagination-element">
+                                        <span>{{ paginator.ELLIPSIS }}</span>
+                                    </li>
+                                {% else %}
+                                    {% if page_num == 1 or page_num == paginator.num_pages %}
+                                    <li class="pagination-element important">
+                                    {% else %}
+                                    <li class="pagination-element">
+                                    {% endif %}
+                                        {% replace request.GET "page" page_num as url %}
+                                        <a href="{{ home_url }}?{{ url }}">{{ page_num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="pagination-element important">
+                            {% replace request.GET "page" page_obj.next_page_number as url %}
+                            <a href="{{ home_url }}?{{ url }}">></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
             {% endif %}
         </div>
     </div> 
 </div>
-
+{% endwith %}
 {% endblock content %}

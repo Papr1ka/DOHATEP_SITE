@@ -44,7 +44,11 @@
                     </g>
                 </svg>
                 <img id="logo" src="{% static 'images/logo.png' %}" alt="" class="logo">
-                <input class="headerfont search" placeholder="Найти вопрос, ответ, тему или раздел" type="text">
+                <form action="{% url 'home' %}" method="get">
+                    {% csrf_token %}
+                    <input id="" class="headerfont search" placeholder="Найти вопрос, ответ, тему или раздел" type="text" name="query">
+                    <input type="submit" hidden/>
+                </form>
             </div>
         </div>
         <div class="line"></div>
@@ -71,5 +75,7 @@
             </div>
         </div>
     </footer>
+    {% block endlinks %}
+    {% endblock %}
 </body>
 </html>
