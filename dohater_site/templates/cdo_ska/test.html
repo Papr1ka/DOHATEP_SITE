@@ -1,6 +1,8 @@
 {% extends 'cdo_ska/index.html' %}
 
 {% load static %}
+{% load paginator_tags %}
+{% load i18n %}
 
 {% block links %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -8,42 +10,43 @@
 {% endblock links %}
 
 {% block content %}
-
 <div class="wrapper">
     <div class="inner">
         <div class="content c-content mainfont">
             <div class="c-info c-box c-big-font">
                 <div>
-                    <p>Машинист</p>
-                    <p>2022</p>
+                    <p>{{ object.profession }}</p>
+                    <p>{{ object.date.year }}</p>
                 </div>
                 <div>
-                    <p>Февраль</p>
-                    <p>3 вопроса</p>
+                    {% language "ru" %}
+                    <p>{{ object.date | date:"F" }}</p>
+                    {% endlanguage %}
+                    <p>{{ object.number_questions }} {{ object.number_questions |ru_pluralize:"вопросов,вопрос,вопроса" }}</p>
                 </div>
             </div>
             <div class="line"></div>
-            <div class="big-font">Распоряжение ОАО «РЖД» от 4 февраля 2019 г N 183р Об утверждении Инструкции по эксплуатации локомотивных устройств безопасности Ответы СДО</div>
+            <div class="big-font">{{ object.name }}</div>
+            {% for question in questions %}
             <div class="c-box top c-v-480">
-                <p class="">1</p>
+                <p class="">{{ forloop.counter }}</p>
                 <div class="c-box vertical">
-                    <p class="muted c-box space">Вопрос</p>
-                    <p>фывыфвфывфывфывыфвфывфывфыв</p>
-                    <p class="muted">Ответ</p>
-                    <p>привет привет привет привет привет</p>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="c-box top c-v-480">
-                <p class="">2</p>
-                <div class="c-box vertical">
-                    <div class="image">
-                        <img src="{% static 'images/logo.png' %}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-</div>
 
+                    {% if question.type %}
+                        <div class="image">
+                            <img src="{{ question.image }}" alt="">
+                        </div>
+                    {% else %}
+                        <p class="muted c-box space">Вопрос</p>
+                        <p>{{ question.question }}</p>
+                        <p class="muted">Ответ</p>
+                        <p>{{ question.answer }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="line"></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}

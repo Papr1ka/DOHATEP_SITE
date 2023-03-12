@@ -1,5 +1,12 @@
 from django.db import models
 
+def test_directory_path(instance, filename):
+    q_id = instance.pk
+    if q_id is None:
+        q_id = instance.test.questions.count()
+        q_id += 1
+    return f'images/test_{instance.test.id}_question_{q_id}_{filename}'
+
 class Profession(models.Model):
     name = models.CharField(max_length=100)
     

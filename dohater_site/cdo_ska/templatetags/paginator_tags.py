@@ -46,27 +46,38 @@ def highlight(string, substring):
         )
 
 @register.filter
-def find_and_highlight(question, substring: str):
+def find_and_highlight(questions, substring: str):
     """
     сделать выбор нужного вопроса, а то сейчас выводится первый попавшийся
     """
-    print(type(question))
-    print(dir(question))
+    print(type(questions))
+    print(dir(questions))
     
-    question = question.values()
-    
-    print(question)
-    
-    if len(question) > 0:
-        question = question.values()[0]
-    else:
-        return ""
-    string = question.get("question").lower()
-    string_lower = string.lower()
+    questions = questions.values()
     substring_lower = substring.lower()
-    if string_lower.find(substring_lower) == -1:
-        string = question.get("answer")
+    for question in questions:
+        string = question['question']
+        string_lower = string.lower()
+        if string_lower.find(substring_lower) != -1:
+            return highlight(string, substring)
+        string = question['answer']
+        string_lower = string.lower()
+        if string_lower.find(substring_lower) != -1:
+            return highlight(string, substring)
+    return ""
+
+@register.filter
+def ru_pluralize(string, variants):
+    variants = variants.split(",")
+    value = abs(int(string))
     
-    print(string, substring)
-    
-    return highlight(string, substring)
+    if value % 100 in (11, 12, 13, 14):
+        variant = 0
+    elif value % 10 == 1:
+        variant = 1
+    elif value % 10 in (2, 3, 4):
+        variant = 2
+    else:
+        variant = 0
+
+    return variants[variant]

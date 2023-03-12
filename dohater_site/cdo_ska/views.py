@@ -1,9 +1,10 @@
 from django.http import QueryDict
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Test, Profession
 from django.db.models import Q
+from config.settings import STATIC_URL, MEDIA_URL
 
 # Create your views here.
 def index(request):
@@ -41,19 +42,6 @@ class HomePageView(ListView):
                 form_data.append(value)
 
         context['form_data'] = form_data
-        
-        test_count = self.queryset.count()
-        message = ""
-        if test_count % 100 in (11, 12, 13, 14):
-            message = "Тестов найдено"
-        elif test_count % 10 == 1:
-            message = "Тест найден"
-        elif test_count % 10 in (2, 3, 4):
-            message = "Теста найдено"
-        else:
-            message = "Тестов найдено"
-        
-        context['message'] = message
         context['query'] = self.request.GET.get("query", "")
         
         return context
@@ -86,6 +74,21 @@ class HomePageView(ListView):
         
         return super().get(request, *args, **kwargs)
         
+
+class TestDetailView(DetailView):
+    model = Test
+    template_name = "cdo_ska/test.html"
+    queryset = Test.objects.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        questions = self.get_object().questions.values()
+        for question in questions:
+            if question.get("type") and question.get("image"):
+                question['image'] = STATIC_URL + MEDIA_URL + question.get("image")
+        context['questions'] = questions
+        context.update(global_context())
+        return context
 
 def home(request):
     return render(request, 'cdo_ska/home.html')

@@ -5,8 +5,8 @@
 {% load i18n %}
 
 {% block links %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock links %}
 
 {% block endlinks %}
@@ -25,7 +25,6 @@
                 {% if professions.count > 0 %}
                 <div class="side-category">
                     <div class="side-header categoryfont">Профессия</div>
-                    {% get_proper_elided_page_range paginator page_obj.number as page_range %}
                     {% for profession in professions %}
                     {% get_filter_cheked form_data "profession_" profession.id as is_cheked %}
                     <input type="checkbox" class="checkbox" id="profession_{{ profession.id }}" name="profession_{{ profession.id }}" {{ is_cheked }} value="{{ profession.id }}">
@@ -60,7 +59,7 @@
         </div>
         <div class="main">
             <div class="founded headerfont">
-                <span class="count">{{ tests_count }}</span> {{ message }}
+                <span class="count">{{ tests_count }}</span> {{ tests_count | ru_pluralize:"Тестов найдено,Тест найден,Теста найдено" }}
             </div>
             {% if tests_count > 0 %}
             <div class="content">
@@ -77,7 +76,7 @@
                         <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
                         {% autoescape off %}
                         <div class="test_name">
-                            {{ test.name | highlight:query}}
+                            <a href="{% url 'test' test.id %}">{{ test.name | highlight:query}}</a>
                             <br>
                             <span class="second">{{ test.questions | find_and_highlight:query }}</span>
                         </div>
@@ -91,7 +90,7 @@
                         <div class="number">{{ forloop.counter0 | add:page_obj.start_index }}</div>
                         {% autoescape off %}
                         <div class="test_name">
-                            {{ test.name }}
+                            <a href="{% url 'test' test.id %}">{{ test.name }}</a>
                         </div>
                         {% endautoescape %}
                         <div class="questions">{{ test.number_questions }}</div>

@@ -27,6 +27,7 @@
 
 p{
     word-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 .headerfont{
