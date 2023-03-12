@@ -1,7 +1,7 @@
 from django.http import QueryDict
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Test, Profession
 from django.db.models import Q
 from config.settings import STATIC_URL, MEDIA_URL
@@ -87,7 +87,17 @@ class TestDetailView(DetailView):
             if question.get("type") and question.get("image"):
                 question['image'] = STATIC_URL + MEDIA_URL + question.get("image")
         context['questions'] = questions
-        context.update(global_context())
+        return context
+
+
+class TestCreateView(CreateView):
+    model = Test
+    template_name = "cdo_ska/create_test.html"
+    queryset = Test.objects.all()
+    fields = ['name', 'profession', 'date', 'number_questions']
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context
 
 def home(request):

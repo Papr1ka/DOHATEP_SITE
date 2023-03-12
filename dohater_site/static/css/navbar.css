@@ -67,7 +67,7 @@
     margin-left: 48px;
 }
 
-#burger{
+.resp-icon{
     display: none;
 }
 
@@ -101,7 +101,7 @@
         display: none;
     }
 
-    #burger{
+    .resp-icon{
         display: block;
     }
 }

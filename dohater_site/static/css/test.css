@@ -6,6 +6,7 @@
     flex-direction: column;
     gap: 80px;
     box-sizing: border-box;
+    border-radius: 0px 0px 24px 24px;
 }
 
 .c-content *{
